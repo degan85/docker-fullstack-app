@@ -55,7 +55,7 @@ function App() {
               onChange={changeHandler}
               value={value}
             />
-            <button type="submit">확인</button>
+            <button type="submit">Go</button>
           </form>
         </div>
       </header>
