@@ -46,7 +46,7 @@ function App() {
 
         <div className="container">
           {lists && lists.map((list, index) => (
-            <li key={index}>{list.value}</li>
+            <li key={index}>{list.VALUE}</li>
           ))}
           <form className="example" onSubmit={submitHandler}>
             <input
