@@ -14,8 +14,8 @@ script:
 
 after_success: 
     - docker build -t degan8585/docker-frontend ./frontend
-    - docker build -t degan8585/docker-backend  ./backend
-    - docker build -t degan8585/docker-nginx    ./nginx
+    - docker build -t degan8585/docker-backend ./backend
+    - docker build -t degan8585/docker-nginx ./nginx
 
     - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
 
@@ -27,7 +27,7 @@ deploy:
     provider: elasticbeanstalk
     region: "ap-northeast-2"
     app: "docker-fullstack-app"
-    env: DockerFullstackApp-env
+    env: "DockerFullstackApp-env"
     bucket_name: elasticbeanstalk-ap-northeast-2-744388353488
     bucket_path: "docker-fullstack-app"
     on: 
