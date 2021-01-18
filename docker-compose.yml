@@ -32,7 +32,6 @@ services:
             MYSQL_DATABASE: myapp
             MYSQL_PORT: 3306
 
-    # AWS 연결 때문에
     # mysql:
     #     build: ./mysql
     #     restart: unless-stopped
