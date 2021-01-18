@@ -6,7 +6,7 @@ import axios from 'axios';
 function App() {
 
   const [lists, setLists] = useState([]);
-  const [value, setValue] = useState("");
+  const [VALUE, setValue] = useState("");
 
   useEffect(() => {
 
@@ -53,7 +53,7 @@ function App() {
               type="text"
               placeholder="내용을 입력해주세요..."
               onChange={changeHandler}
-              value={value}
+              value={VALUE}
             />
             <button type="submit">Go</button>
           </form>
