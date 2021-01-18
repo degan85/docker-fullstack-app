@@ -6,7 +6,7 @@ import axios from 'axios';
 function App() {
 
   const [lists, setLists] = useState([]);
-  const [VALUE, setValue] = useState("");
+  const [value, setValue] = useState("");
 
   useEffect(() => {
 
@@ -46,14 +46,14 @@ function App() {
 
         <div className="container">
           {lists && lists.map((list, index) => (
-            <li key={index}>{list.VALUE}</li>
+            <li key={index}>{list.value}</li>
           ))}
           <form className="example" onSubmit={submitHandler}>
             <input
               type="text"
               placeholder="내용을 입력해주세요..."
               onChange={changeHandler}
-              value={VALUE}
+              value={value}
             />
             <button type="submit">Go</button>
           </form>

@@ -22,7 +22,7 @@ db.pool.query(`create table lists (
 // DB lists 테이블에 있는 모든 데이터를 프론트 서버에 보내주기
 app.get('/api/values', function (req, res) {
     // DB에서 모든 정보 가져오기
-    db.pool.query('SELECT * FROM lists;',
+    db.pool.query('SELECT ID as \'id\', VALUE as \'value\' FROM lists;',
         (err, results, fileds) => {
             if (err)
                 return res.status(500).send(err);
