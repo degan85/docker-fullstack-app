@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import logo from '../logo.svg';
 import '../App.css';
-import axios from 'axios';
+import _api from "../lib/API";
 
 function TimelineMemo() {
 
@@ -9,34 +9,34 @@ function TimelineMemo() {
   const [value, setValue] = useState("");
 
   useEffect(() => {
-
-    // DB 데이터를 가져온다
-    axios.get('/api/values')
-      .then(response => {
-        console.log('response', response.data);
-        setLists(response.data);
-      });
+    getValues();
   }, []);
+
+  // DB 데이터를 가져온다
+  const getValues = () => {
+
+    _api.request({url:'values'})
+      .then(data => {
+        setLists(data);
+      });
+  }
 
   const changeHandler = (event) => {
     setValue(event.currentTarget.value);
-
   }
 
   const submitHandler = (event) => {
     event.preventDefault();
 
-    axios.post(`/api/value`, { value: value })
-      .then(response => {
-        if (response.data.success) {
-          console.log('response', response);
-          setLists([...lists, response.data]);
+    _api.request({ url: 'value', method: 'post', data: { value: value } })
+      .then(data => {
+        if (data) {
+          setLists([...lists, data]);
           setValue("");
         } else {
           alert("값을 DB에 넣기 실패");
         }
-      });
-      
+    });
   }
 
   return (

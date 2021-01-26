@@ -11,12 +11,13 @@ r.get('/values', function (req, res) {
             if (err)
                 return res.status(500).send(err);
             else
-                return res.json(results);
+                return res.json( results );
     });
 });
 
 // client에서 입력한 값을 DB lists 테이블에 넣어주기
 r.post('/value', function (req, res, next) {
+
     // DB에 값 넣어주기
     db.pool.query(`INSERT INTO lists (value) VALUES("${ req.body.value }")`,
         (err, results, fileds) => {
